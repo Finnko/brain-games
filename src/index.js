@@ -1,25 +1,21 @@
 import readlineSync from 'readline-sync';
 import greetUser from './cli.js';
 import { compareAnswers } from './utils.js';
-import { getEvenQuestion, getEvenAnswer } from './games/even.js';
+import { evenGame } from './games/even.js';
+import { calcGame } from './games/calc.js';
 
 const MAX_ATTEMPTS = 3;
 
 const gamesMap = {
-  even: {
-    question: getEvenQuestion,
-    answer: getEvenAnswer,
-  }
+  even: evenGame,
+  calc: calcGame,
 }
 
-
-const generateQuestion = (type) => gamesMap[type]['question']();
-
-const generateAnswer = (type, quizQuestion) => gamesMap[type]['answer'](quizQuestion);
+const generateConditions = (type) => gamesMap[type]();
 
 const processGameRound = (gameType) => {
-  const quizQuestion = generateQuestion(gameType);
-  const answer = generateAnswer(gameType, quizQuestion);
+  const { quizQuestion, answer } = generateConditions(gameType);
+
   const userAnswer = readlineSync.question(`Question: ${quizQuestion} `);
 
   return compareAnswers(answer, userAnswer);
