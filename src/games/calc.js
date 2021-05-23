@@ -23,7 +23,7 @@ const calcGame = () => {
 
   return {
     quizQuestion: `${firstNumber} ${operation} ${secondNumber}`,
-    answer: result,
+    answer: String(result),
   };
 };
 
