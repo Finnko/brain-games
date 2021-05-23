@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
-import { initGame } from '../src/index.js';
+import initGame from '../src';
 
-const result = initGame('calc');
+const description = 'What is the result of the expression?';
+
+const result = initGame('calc', description);
 
 console.log(result);

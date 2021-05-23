@@ -17,19 +17,16 @@ const findGcd = (a, b) => {
 
     secondOperand %= firstOperand;
   }
-}
+};
 
-
-const gcdGame = () => {
+export default () => {
   const firstNumber = getRandomNumber();
   const secondNumber = getRandomNumber();
 
-  let result = findGcd(firstNumber, secondNumber);
+  const result = findGcd(firstNumber, secondNumber);
 
   return {
     quizQuestion: `${firstNumber} ${secondNumber}`,
     answer: String(result),
   };
 };
-
-export { gcdGame };

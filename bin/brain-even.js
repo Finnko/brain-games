@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
-import { initGame } from '../src/index.js';
+import initGame from '../src';
 
-const result = initGame('even');
+const description = 'Answer "yes" if the number is even, otherwise answer "no".';
+
+const result = initGame('even', description);
 
 console.log(result);

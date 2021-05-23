@@ -2,23 +2,21 @@ import { getRandomNumber, getArrayRandomElement } from '../utils.js';
 
 const OPERATIONS = ['+', '-', '*'];
 
-
-const calcGame = () => {
+export default () => {
   const firstNumber = getRandomNumber();
   const secondNumber = getRandomNumber();
   const operation = getArrayRandomElement(OPERATIONS);
   let result;
 
-  switch(operation) {
-    case '+':
-      result = firstNumber + secondNumber;
-      break;
+  switch (operation) {
     case '-':
       result = firstNumber - secondNumber;
       break;
     case '*':
       result = firstNumber * secondNumber;
       break;
+    default:
+      result = firstNumber + secondNumber;
   }
 
   return {
@@ -26,5 +24,3 @@ const calcGame = () => {
     answer: String(result),
   };
 };
-
-export { calcGame };
