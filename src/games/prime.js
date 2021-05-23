@@ -1,32 +1,25 @@
-import { getRandomNumber, getRandomNumberInRange } from '../utils.js';
+import { getRandomNumber } from '../utils.js';
 
-const MIN_LENGTH = 5;
-const MAX_LENGTH = 15;
-const MAX_DIFF = 15;
+const PRIME_RANGE = 1000;
 
-const makeArithmeticProgression = () => {
-  const result = [];
-  const diff = getRandomNumberInRange(1, MAX_DIFF);
-  const length = getRandomNumberInRange(MIN_LENGTH, MAX_LENGTH);
-  const start = getRandomNumber();
-
-  let i = start;
-
-  while (result.length <= length) {
-    result.push(i);
-
-    i += diff;
+const checkIsPrime = (num) => {
+  for (let i = 2; i < Math.sqrt(num); i += 1) {
+    if (num % i === 0) {
+      return false;
+    }
   }
 
-  return result;
+  return num > 1;
 };
 
+const getAnswer = (num) => (checkIsPrime(num) ? 'yes' : 'no');
+
 export default () => {
-  const progression = makeArithmeticProgression();
-  const elementIndex = getRandomNumberInRange(0, progression.length - 1);
+  const number = getRandomNumber(PRIME_RANGE);
+  const result = getAnswer(number);
 
   return {
-    quizQuestion: `${[...progression.slice(0, elementIndex), '..', progression.slice(elementIndex + 1)]}`,
-    answer: String(progression[elementIndex]),
+    quizQuestion: `${number}`,
+    answer: result,
   };
 };

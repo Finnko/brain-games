@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import initGame from '../src';
+import initGame from '../src/index.js';
 
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 

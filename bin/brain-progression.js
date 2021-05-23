@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import initGame from '../src';
+import initGame from '../src/index.js';
 
 const description = 'What number is missing in the progression?';
 
