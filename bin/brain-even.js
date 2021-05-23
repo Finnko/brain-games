@@ -1,45 +1,17 @@
 #!/usr/bin/env node
-import readlineSync from 'readline-sync';
 
-const MAX_ATTEMPTS = 3;
-const RANGE = 100;
-const stack = [];
+import greetUser from '../src/cli.js';
+import { startGame } from '../src/games/even.js';
 
-const isEven = (num) => num % 2 === 0;
 
-const checkAnswer = (num) => (isEven(num) ? 'yes' : 'no');
+const name = greetUser();
+const congratulation = `Congratulations, ${name}!`;
+const loose = `Let's try again, ${name}!`;
 
-const generateNumber = (range) => Math.round(Math.random() * range);
+const printGameResult = () => {
+  const resultOfGame = startGame();
 
-// const printAnswer = (result) => {
-//
-// }
-
-// Question: 15
-// Your answer: no
-// Correct!
-//   Question: 6
-// Your answer: yes
-// Correct!
-//   Question: 7
-// Your answer: no
-// Correct!
-//   Congratulations, Sam!
-const game = () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}`);
-
-  for (let i = 0; i < MAX_ATTEMPTS; i += 1) {
-    const number = generateNumber(RANGE);
-    const answer = checkAnswer(number);
-    const userAnswer = readlineSync.question(`Question: ${number}`);
-
-    console.log({ answer });
-    console.log({ userAnswer });
-    console.log(typeof answer);
-    console.log(typeof userAnswer);
-  }
+  return resultOfGame ? congratulation : loose;
 }
 
-game();
+console.log(printGameResult());
