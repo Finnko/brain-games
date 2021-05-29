@@ -26,7 +26,7 @@ export default () => {
   const elementIndex = getRandomNumberInRange(0, progression.length - 1);
 
   return {
-    quizQuestion: `${[...progression.slice(0, elementIndex), '..', progression.slice(elementIndex + 1)]}`,
+    quizQuestion: [...progression.slice(0, elementIndex), '..', ...progression.slice(elementIndex + 1)].join(' '),
     answer: String(progression[elementIndex]),
   };
 };

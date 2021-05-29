@@ -55,4 +55,4 @@ $ brain-prime
 
 #### brain-progression
 
-[![asciicast](https://asciinema.org/a/wgC5w6RQmSNyeVyUpbG288bHo.svg)](https://asciinema.org/a/wgC5w6RQmSNyeVyUpbG288bHo)
+[![asciicast](https://asciinema.org/a/S1MMQOdCbQ1tuQ8FVid0gx55I.svg)](https://asciinema.org/a/S1MMQOdCbQ1tuQ8FVid0gx55I)
