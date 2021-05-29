@@ -29,7 +29,7 @@ const processGameRound = (gameType) => {
 
 export default (gameType, gameDescription) => {
   const name = greetUser();
-  const congratSequence = `Congratulations, ${name}!`;
+  const congratsSequence = `Congratulations, ${name}!`;
   const looseSequence = `Let's try again, ${name}!`;
   let resultOfGame = true;
 
@@ -44,5 +44,5 @@ export default (gameType, gameDescription) => {
     }
   }
 
-  return resultOfGame ? congratSequence : looseSequence;
+  return resultOfGame ? congratsSequence : looseSequence;
 };
