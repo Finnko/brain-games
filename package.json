@@ -1,8 +1,7 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/Finnko/frontend-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/Finnko/frontend-project-lvl1/actions)",
-  "main": "index.js",
+  "description": "Brain games - cli math mini games",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
