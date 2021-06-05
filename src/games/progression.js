@@ -1,32 +1,40 @@
-import { getRandomNumber, getRandomNumberInRange } from '../utils.js';
+import { getRandomNumberInRange } from '../utils.js';
+import startGame from '../index.js';
 
 const MIN_LENGTH = 5;
 const MAX_LENGTH = 15;
 const MAX_DIFF = 15;
 
-const makeArithmeticProgression = () => {
+
+const description = 'What number is missing in the progression?';
+
+
+const makeArithmeticProgression = (start, diff, length) => {
   const result = [];
-  const diff = getRandomNumberInRange(1, MAX_DIFF);
-  const length = getRandomNumberInRange(MIN_LENGTH, MAX_LENGTH);
-  const start = getRandomNumber();
 
-  let i = start;
-
-  while (result.length <= length) {
-    result.push(i);
-
-    i += diff;
+  for (let i = start; result.length <= length; i += diff) {
+    result.push(i)
   }
 
   return result;
 };
 
-export default () => {
-  const progression = makeArithmeticProgression();
-  const elementIndex = getRandomNumberInRange(0, progression.length - 1);
+const generateConditions = () => {
+  const progressionDiff = getRandomNumberInRange(1, MAX_DIFF);
+  const progressionLength = getRandomNumberInRange(MIN_LENGTH, MAX_LENGTH);
+  const progressionStart = getRandomNumberInRange(0, 100);
 
-  return {
-    quizQuestion: [...progression.slice(0, elementIndex), '..', ...progression.slice(elementIndex + 1)].join(' '),
-    answer: String(progression[elementIndex]),
-  };
+  const progression = makeArithmeticProgression(progressionStart, progressionDiff, progressionLength);
+
+  const elementIndex = getRandomNumberInRange(0, progression.length - 1);
+  const maskedProgression = [...progression.slice(0, elementIndex), '..', ...progression.slice(elementIndex + 1)].join(' ');
+
+  const quizQuestion = maskedProgression;
+  const answer = String(progression[elementIndex]);
+
+  return [quizQuestion, answer];
+}
+
+export default () => {
+  startGame(description, generateConditions);
 };
