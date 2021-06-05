@@ -30,7 +30,7 @@ const generateConditions = () => {
   const answer = String(findGcd(firstNumber, secondNumber));
 
   return [quizQuestion, answer];
-}
+};
 
 export default () => {
   startGame(description, generateConditions);

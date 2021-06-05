@@ -24,7 +24,7 @@ const generateConditions = () => {
   const answer = String(getAnswer(number));
 
   return [quizQuestion, answer];
-}
+};
 
 export default () => {
   startGame(description, generateConditions);

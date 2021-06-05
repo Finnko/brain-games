@@ -17,7 +17,7 @@ const calculateArithmeticResult = (numberA, numberB, operation) => {
   }
 
   return result;
-}
+};
 
 export {
   getArrayRandomElement,
