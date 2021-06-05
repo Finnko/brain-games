@@ -1,9 +1,5 @@
 #!/usr/bin/env node
 
-import initGame from '../src/index.js';
+import playGame from '../src/games/calc.js';
 
-const description = 'What is the result of the expression?';
-
-const result = initGame('calc', description);
-
-console.log(result);
+playGame();

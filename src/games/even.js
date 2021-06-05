@@ -7,11 +7,15 @@ const isEven = (num) => num % 2 === 0;
 
 const getAnswer = (num) => (isEven(num) ? 'yes' : 'no');
 
-export default () => {
-  const conditions = {
-    generateQuizQuestion: () => getRandomNumberInRange(0, 100),
-    getCorrectAnswer: getAnswer,
-  };
+const generateConditions = () => {
+  const number = getRandomNumberInRange(0, 100);
 
-  startGame(description, conditions);
+  const quizQuestion = number;
+  const answer = String(getAnswer(number));
+
+  return [quizQuestion, answer];
+}
+
+export default () => {
+  startGame(description, generateConditions);
 };

@@ -1,5 +1,5 @@
 import { getRandomNumberInRange } from '../utils.js';
-import startGame from '../index';
+import startGame from '../index.js';
 
 const description = 'Find the greatest common divisor of given numbers.';
 
@@ -22,21 +22,16 @@ const findGcd = (a, b) => {
   }
 };
 
+const generateConditions = () => {
+  const firstNumber = getRandomNumberInRange(0, 100);
+  const secondNumber = getRandomNumberInRange(0, 100);
+
+  const quizQuestion = `${firstNumber} ${secondNumber}`;
+  const answer = String(findGcd(firstNumber, secondNumber));
+
+  return [quizQuestion, answer];
+}
+
 export default () => {
-  const firstNumber = getRandomNumberInRange();
-  const secondNumber = getRandomNumberInRange();
-
-  const result = findGcd(firstNumber, secondNumber);
-
-  return {
-    quizQuestion: `${firstNumber} ${secondNumber}`,
-    answer: String(result),
-  };
-
-  const conditions = {
-    generateQuizQuestion: () => `${getRandomNumberInRange(0, 100)} ${getRandomNumberInRange(0, 100)}`,
-    getCorrectAnswer: () => ,
-  };
-
-  startGame(description, conditions);
+  startGame(description, generateConditions);
 };

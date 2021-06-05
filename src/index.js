@@ -2,15 +2,13 @@ import readlineSync from 'readline-sync';
 
 const MAX_ATTEMPTS = 3;
 
-const processGameRound = (conditions) => {
-  const { generateQuizQuestion, getCorrectAnswer } = conditions;
-  const quizQuestion = generateQuizQuestion();
-  const answer = getCorrectAnswer(quizQuestion);
+const processGameRound = (generateConditions) => {
+  const [quizQuestion, correctAnswer] = generateConditions();
 
   const userAnswer = readlineSync.question(`Question: ${quizQuestion} `);
 
-  if (answer !== userAnswer) {
-    console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${answer}.`);
+  if (correctAnswer !== userAnswer) {
+    console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${correctAnswer}.`);
     return false;
   }
 
@@ -18,7 +16,7 @@ const processGameRound = (conditions) => {
   return true;
 };
 
-export default (gameDescription, conditions) => {
+export default (gameDescription, generateConditions) => {
   console.log('Welcome to the Brain Games!');
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}`);
@@ -29,12 +27,13 @@ export default (gameDescription, conditions) => {
   console.log(gameDescription);
 
   for (let i = 0; i < MAX_ATTEMPTS; i += 1) {
-    const gameRoundResult = processGameRound(conditions);
+    const gameRoundResult = processGameRound(generateConditions);
 
     if (!gameRoundResult) {
-      return looseSequence;
+      console.log(looseSequence);
+      return;
     }
   }
 
-  return congratsSequence;
+  console.log(congratsSequence);
 };

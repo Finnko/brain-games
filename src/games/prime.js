@@ -1,6 +1,9 @@
-import { getRandomNumber } from '../utils.js';
+import { getRandomNumberInRange } from '../utils.js';
+import startGame from '../index.js';
 
 const PRIME_RANGE = 1000;
+
+const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const checkIsPrime = (num) => {
   for (let i = 2; i <= Math.sqrt(num); i += 1) {
@@ -14,12 +17,15 @@ const checkIsPrime = (num) => {
 
 const getAnswer = (num) => (checkIsPrime(num) ? 'yes' : 'no');
 
-export default () => {
-  const number = getRandomNumber(PRIME_RANGE);
-  const result = getAnswer(number);
+const generateConditions = () => {
+  const number = getRandomNumberInRange(0, PRIME_RANGE);
 
-  return {
-    quizQuestion: `${number}`,
-    answer: result,
-  };
+  const quizQuestion = number;
+  const answer = String(getAnswer(number));
+
+  return [quizQuestion, answer];
+}
+
+export default () => {
+  startGame(description, generateConditions);
 };
