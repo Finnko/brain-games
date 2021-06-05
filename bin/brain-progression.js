@@ -3,4 +3,3 @@
 import playGame from '../src/games/progression.js';
 
 playGame();
-
