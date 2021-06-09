@@ -1,4 +1,4 @@
-import { getRandomNumberInRange } from '../utils.js';
+import { getRandom } from '../utils.js';
 import startGame from '../index.js';
 
 const MIN_LENGTH = 5;
@@ -18,13 +18,13 @@ const makeArithmeticProgression = (start, diff, length) => {
 };
 
 const generateConditions = () => {
-  const progressionDiff = getRandomNumberInRange(1, MAX_DIFF);
-  const progressionLength = getRandomNumberInRange(MIN_LENGTH, MAX_LENGTH);
-  const startPosition = getRandomNumberInRange(0, 100);
+  const progressionDiff = getRandom(1, MAX_DIFF);
+  const progressionLength = getRandom(MIN_LENGTH, MAX_LENGTH);
+  const startPosition = getRandom();
 
   const progression = makeArithmeticProgression(startPosition, progressionDiff, progressionLength);
 
-  const elementIndex = getRandomNumberInRange(0, progression.length - 1);
+  const elementIndex = getRandom(0, progression.length - 1);
   const maskedProgression = [...progression.slice(0, elementIndex), '..', ...progression.slice(elementIndex + 1)].join(' ');
 
   const quizQuestion = maskedProgression;
