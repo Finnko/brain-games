@@ -21,19 +21,16 @@ export default (gameDescription, generateConditions) => {
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}`);
 
-  const congratsSequence = `Congratulations, ${name}!`;
-  const looseSequence = `Let's try again, ${name}!`;
-
   console.log(gameDescription);
 
   for (let i = 0; i < MAX_ATTEMPTS; i += 1) {
     const gameRoundResult = processGameRound(generateConditions);
 
     if (!gameRoundResult) {
-      console.log(looseSequence);
+      console.log(`Let's try again, ${name}!`);
       return;
     }
   }
 
-  console.log(congratsSequence);
+  console.log(`Congratulations, ${name}!`);
 };
