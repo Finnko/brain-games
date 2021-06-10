@@ -20,8 +20,8 @@ const calculateArithmeticResult = (numberA, numberB, operation) => {
 };
 
 const generateConditions = () => {
-  const firstNumber = getRandom();
-  const secondNumber = getRandom();
+  const firstNumber = getRandom(0, 100);
+  const secondNumber = getRandom(0, 100);
   const operation = getArrayRandomElement(OPERATIONS);
 
   const quizQuestion = `${firstNumber} ${operation} ${secondNumber}`;

@@ -12,8 +12,8 @@ const findGcd = (a, b) => {
 };
 
 const generateConditions = () => {
-  const firstNumber = getRandom();
-  const secondNumber = getRandom();
+  const firstNumber = getRandom(0, 100);
+  const secondNumber = getRandom(0, 100);
 
   const quizQuestion = `${firstNumber} ${secondNumber}`;
   const answer = String(findGcd(firstNumber, secondNumber));

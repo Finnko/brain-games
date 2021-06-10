@@ -20,7 +20,7 @@ const makeArithmeticProgression = (start, diff, length) => {
 const generateConditions = () => {
   const progressionDiff = getRandom(1, MAX_DIFF);
   const progressionLength = getRandom(MIN_LENGTH, MAX_LENGTH);
-  const startPosition = getRandom();
+  const startPosition = getRandom(0, 100);
 
   const progression = makeArithmeticProgression(startPosition, progressionDiff, progressionLength);
 

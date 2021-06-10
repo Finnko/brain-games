@@ -8,7 +8,7 @@ const isEven = (num) => num % 2 === 0;
 const getAnswer = (num) => (isEven(num) ? 'yes' : 'no');
 
 const generateConditions = () => {
-  const number = getRandom();
+  const number = getRandom(0, 100);
 
   const quizQuestion = number;
   const answer = String(getAnswer(number));
